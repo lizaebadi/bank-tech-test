@@ -27,4 +27,12 @@ describe("BankAccount", () => {
     expect(bankAccount.transactions[0].date.getDate()).toBe(17);
 
   });
+
+  it("Updates the balance from £1,000 when £500 is withdrawn", () => {
+    const bankAccount = new BankAccount();
+
+    bankAccount.deposit(1000);
+    bankAccount.withdrawal(500);
+    expect(bankAccount.balance).toBe(500);
+  })
 });

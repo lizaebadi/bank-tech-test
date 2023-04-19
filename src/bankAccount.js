@@ -13,6 +13,10 @@ class BankAccount {
     };
     this.transactions.push(transaction);
   }
+
+  withdrawal(withdrawalAmount) {
+    this.balance -= withdrawalAmount;
+  }
 }
 
 module.exports = BankAccount;
