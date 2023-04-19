@@ -35,4 +35,14 @@ describe("BankAccount", () => {
     bankAccount.withdrawal(500);
     expect(bankAccount.balance).toBe(500);
   })
+
+  it("Checks the transaction for withdrawals are updated", () => {
+    const bankAccount = new BankAccount();
+
+    bankAccount.deposit(1000);
+    bankAccount.withdrawal(500);
+    expect(bankAccount.transactions[1].type).toEqual("debit");
+    expect(bankAccount.transactions[1].amount).toBe(500);
+  })
+
 });
