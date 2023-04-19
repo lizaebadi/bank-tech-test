@@ -45,4 +45,14 @@ describe("BankAccount", () => {
     expect(bankAccount.transactions[1].amount).toBe(500);
   })
 
+  it("Checks the correct number of transactions are shown", () => {
+    const bankAccount = new BankAccount();
+
+    bankAccount.deposit(2000);
+    bankAccount.withdrawal(500);
+    bankAccount.deposit(300);
+    bankAccount.withdrawal(700);
+    expect(bankAccount.transactions.length).toBe(4);
+  })
+
 });
