@@ -10,11 +10,11 @@ class BankStatement {
   }
 
   formatTransaction() {
-    const allTransactions = this.account.transactions;
+    const allTransactions = this.account.transactions.reverse();
     if (allTransactions) {
       for (let i = 0; i <= allTransactions.length - 1; i++) {
         const eachTransaction = allTransactions[i];
-        if ((eachTransaction.type = "credit")) {
+        if ((eachTransaction.type == "credit")) {
           const sheetFormat = `\n${eachTransaction.date.toLocaleDateString(
             "en-GB"
           )} || ${eachTransaction.amount.toFixed(2)} || || ${

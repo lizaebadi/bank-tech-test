@@ -15,8 +15,8 @@ describe("BankStatement", () => {
   });
 
   it("returns correct headings for a statement", () => {
-    account = "";
-    const bankStatement = new BankStatement(account);
+    const bankAccount = new BankAccount;
+    const bankStatement = new BankStatement(bankAccount);
     expect(bankStatement.printStatement()).toEqual(
       "date || credit || debit || balance"
     );
@@ -30,6 +30,17 @@ describe("BankStatement", () => {
     expect(bankStatement.printStatement()).toEqual(
       "date || credit || debit || balance\n17/04/2023 || 500.00 || || 500.00"
     );
-    
+  });
+
+  it("returns multiple transactions to the statement in correct order", () => {
+    const bankAccount = new BankAccount();
+    bankAccount.deposit(1000);
+    bankAccount.deposit(2000);
+    bankAccount.withdrawal(500);
+    const bankStatement = new BankStatement(bankAccount);
+
+    expect(bankStatement.printStatement()).toEqual(
+      "date || credit || debit || balance\n17/04/2023 || || 500.00 || 2500.00\n17/04/2023 || 2000.00 || || 3000.00\n17/04/2023 || 1000.00 || || 1000.00"
+    );
   });
 });
