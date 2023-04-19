@@ -6,26 +6,25 @@ class BankAccount {
 
   deposit(depositAmount) {
     this.balance += depositAmount;
-    const transaction = {
-      date: new Date(),
-      amount: depositAmount,
-      type: "credit",
-    };
-    this.transactions.push(transaction);
+    this.addTransaction(depositAmount, "credit")
   }
 
   withdrawal(withdrawalAmount) {
     if (this.balance - withdrawalAmount >= 0) {
       this.balance -= withdrawalAmount;
-      const transaction = {
-        date: new Date(),
-        amount: withdrawalAmount,
-        type: "debit",
-      };
-      this.transactions.push(transaction);
+      this.addTransaction(withdrawalAmount, "debit");
     } else { 
       throw new Error("Insufficient funds");
     }
+  }
+
+  addTransaction(amount, type) {
+    const transaction = {
+      date: new Date(),
+      amount: amount,
+      type: type,
+    };
+    this.transactions.push(transaction);
   }
 }
 
