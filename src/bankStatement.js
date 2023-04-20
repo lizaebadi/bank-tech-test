@@ -11,7 +11,6 @@ class BankStatement {
 
   formatTransaction() {
     const allTransactions = this.account.transactions.reverse();
-    if (allTransactions) {
       for (let i = 0; i <= allTransactions.length - 1; i++) {
         const eachTransaction = allTransactions[i];
         if ((eachTransaction.type == "credit")) {
@@ -29,7 +28,6 @@ class BankStatement {
           }`;
           this.sheet += sheetFormat;
         }
-      }
     }
   }
 }
