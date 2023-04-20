@@ -60,7 +60,7 @@ $ npm install
 ```bash
 $ npm test
 ```
-![Test Coverage](./images/test_coverage.png)
+<img src="test.png">
 
 ## 5. Run the code
 
