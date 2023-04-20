@@ -42,7 +42,7 @@ I designed a class system for the solution. `BankAccount` handles transaction in
 The program was built in JavaScript and uses the Jest test suit. This guidance assumes you have NVM (the Node version manager) installed:
 
 ```bash
-#Setup our environment to use node lateset version 
+#Setup our environment to use node latest version 
 $ nvm use node
 
 # Clone the repository 
