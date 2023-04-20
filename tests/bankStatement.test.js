@@ -14,10 +14,14 @@ describe("BankStatement", () => {
     MockDate.reset();
   });
 
-  it("returns correct headings for a statement", () => {
+  it("returns correct headings for a statement with a transaction", () => {
     const bankAccount = new BankAccount;
     const bankStatement = new BankStatement(bankAccount);
-    expect(bankStatement.printStatement()).toEqual(
+
+    const consoleSpy = jest.spyOn(console, 'log');
+    bankStatement.printStatement()
+
+    expect(consoleSpy).toHaveBeenCalledWith(
       "date || credit || debit || balance"
     );
   });
@@ -27,8 +31,11 @@ describe("BankStatement", () => {
     bankAccount.deposit(500);
     const bankStatement = new BankStatement(bankAccount);
 
-    expect(bankStatement.printStatement()).toEqual(
-      "date || credit || debit || balance\n17/04/2023 || 500.00 || || 500.00"
+    const consoleSpy = jest.spyOn(console, 'log');
+    bankStatement.printStatement()
+
+    expect(consoleSpy).toHaveBeenCalledWith(
+      "date || credit || debit || balance\n17/04/2023 || 500.00 ||   || 500.00"
     );
   });
 
@@ -39,8 +46,11 @@ describe("BankStatement", () => {
     bankAccount.withdrawal(500);
     const bankStatement = new BankStatement(bankAccount);
 
-    expect(bankStatement.printStatement()).toEqual(
-      "date || credit || debit || balance\n17/04/2023 || || 500.00 || 2500.00\n17/04/2023 || 2000.00 || || 3000.00\n17/04/2023 || 1000.00 || || 1000.00"
+    const consoleSpy = jest.spyOn(console, 'log');
+    bankStatement.printStatement()
+
+    expect(consoleSpy).toHaveBeenCalledWith(
+      "date || credit || debit || balance\n17/04/2023 ||   || 500.00 || 2500.00\n17/04/2023 || 2000.00 ||   || 3000.00\n17/04/2023 || 1000.00 ||   || 1000.00"
     );
   });
 });

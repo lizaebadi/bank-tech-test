@@ -6,7 +6,7 @@ class BankStatement {
 
   printStatement() {
     this.formatTransaction();
-    console.log(this.sheet);
+    console.log(this.sheet)
   }
 
   formatTransaction() {
