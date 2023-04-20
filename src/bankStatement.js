@@ -6,29 +6,19 @@ class BankStatement {
 
   printStatement() {
     this.formatTransaction();
-    return this.sheet;
+    console.log(this.sheet);
   }
 
   formatTransaction() {
     const allTransactions = this.account.transactions.reverse();
       for (let i = 0; i <= allTransactions.length - 1; i++) {
         const eachTransaction = allTransactions[i];
-        if ((eachTransaction.type == "credit")) {
-          const sheetFormat = `\n${eachTransaction.date.toLocaleDateString(
-            "en-GB"
-          )} || ${eachTransaction.amount.toFixed(2)} || || ${
-            eachTransaction.currentBalance.toFixed(2)
-          }`;
-          this.sheet += sheetFormat;
-        } else {
-          const sheetFormat = `\n${eachTransaction.date.toLocaleDateString(
-            "en-GB"
-          )} || || ${eachTransaction.amount.toFixed(2)} || ${
-            eachTransaction.currentBalance.toFixed(2)
-          }`;
-          this.sheet += sheetFormat;
-        }
-    }
+        const sheetFormat = '\n' + eachTransaction.date.toLocaleDateString('en-GB') +
+            ' || ' + (eachTransaction.type === 'credit' ? eachTransaction.amount.toFixed(2) : ' ') +
+            ' || ' + (eachTransaction.type !== 'credit' ? eachTransaction.amount.toFixed(2) : ' ') +
+            ' || ' + eachTransaction.currentBalance.toFixed(2);
+        this.sheet += sheetFormat;
+      }
   }
 }
 
